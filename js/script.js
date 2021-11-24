@@ -47,8 +47,9 @@ function userInput() {
 
     for (let i = 0; i < cpuNumbers.length; i++) {
         if (input.value == cpuNumbers[i]) {
+            console.log("paragono", input.value);
             guessed.push(input.value);
-            cpuNumbers[i] = "";
+            cpuNumbers[i] = "rimosso";
         }
     }
 
