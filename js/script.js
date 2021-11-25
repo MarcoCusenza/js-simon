@@ -1,26 +1,35 @@
 // PROGRAMMA
 let lvl = 3;
 let timesLeft = lvl;
-const cpuNumbers = [];
+let cpuNumbers = [];
 let userGuessed = [];
-cpuInput(lvl);
-
-setTimeout(playGame, 3000);
 
 document.getElementById("conferma").addEventListener("click", userInput);
-document.getElementById("replay").addEventListener("click", playGame);
+document.getElementById("play").addEventListener("click", function () {
+    playPreGame();
+    setTimeout(playGame, 3000);
+});
 // END PROGRAMMA
 
 
 
 // FUNZIONI
-function playGame() {
+function playPreGame() { //Prepara il gioco e mostra i numeri da ricordare
     clearBoard();
+    document.getElementById("play").classList.add("hidden");
+    cpuInput(lvl);
+}
+
+function playGame() { //Mostra il form di input
+    document.querySelector(".data").classList.add("hidden");
+    document.getElementById("inputForm").classList.remove("hidden");
     document.getElementById('inputLabel').innerHTML = `Inserisci un numero (ancora ${lvl})`;
 }
 
-function cpuInput(lvl) {
+function cpuInput(lvl) {//Calcola e scrive i numeri random da ricordare
+    document.querySelector(".data").classList.remove("hidden");
     document.getElementById('data-title').innerHTML = "Numeri da ricordare: <br>"
+    document.getElementById('data-content').innerHTML = "";
     for (let i = 0; i < lvl; i++) {
         cpuNumbers.push(randNumb(0, 100));
         if (i == lvl - 1) {
@@ -31,18 +40,17 @@ function cpuInput(lvl) {
     }
 }
 
-function userInput() {
+function userInput() {//Aggiorna il gioco dopo l'inserimento di un numero, controlla se il numero è tra quelli giusti
+    document.getElementById('inputLabel').innerHTML = `Inserisci un numero (ancora ${lvl})`;
     let input = document.getElementById("input");
     if (isNaN(parseInt(input.value))) {
         alert("ATTENZIONE: devi inserire un numero");
     } else if (parseInt(input.value) < 0 || parseInt(input.value) > 100) {
         alert("ATTENZIONE: devi inserire un numero compreso tra 1 e 100");
     } else {
-        console.log("cpuNumbers:", cpuNumbers);
         timesLeft--;
-        console.log(timesLeft);
-        document.getElementById('inputLabel').innerHTML = `Inserisci un numero, ne mancano ${timesLeft}`;
-        document.getElementById('resultLabel').innerHTML = `Hai già inserito ${(lvl - timesLeft)} numeri, ne mancano ${timesLeft}`;
+        document.getElementById('inputLabel').innerHTML = `Inserisci un numero`;
+        document.getElementById('resultLabel').innerHTML = `Hai già inserito ${lvl - timesLeft} numeri, ne mancano ${timesLeft}`;
 
         for (let i = 0; i < cpuNumbers.length; i++) {
             if (input.value == cpuNumbers[i]) {
@@ -50,7 +58,6 @@ function userInput() {
                 cpuNumbers[i] = "";
             }
         }
-        console.log("userGuessed:", userGuessed);
     }
     input.value = "";
 
@@ -60,7 +67,7 @@ function userInput() {
     }
 }
 
-function endGame() {
+function endGame() {//conclude il gioco e mostra il risultato
     document.getElementById("inputForm").classList.add("hidden");
     document.getElementById('data-title').innerHTML = `Hai indovinato ${userGuessed.length} numeri!`;
     const dataContent = document.getElementById('data-content');
@@ -73,19 +80,22 @@ function endGame() {
         }
     }
     document.querySelector('.data').classList.remove("hidden");
-    document.getElementById('replay').classList.remove("hidden");
+    document.getElementById('play').innerHTML = "Play Again";
+    document.getElementById('play').classList.remove("hidden");
 }
 
-function clearBoard() {
+function clearBoard() {//prepara una nuova partita
     userGuessed = [];
+    cpuNumbers = [];
     timesLeft = lvl;
-    document.querySelector(".data").classList.add("hidden");
-    document.getElementById('replay').classList.add("hidden");
-    document.getElementById("inputForm").classList.remove("hidden");
+    document.querySelector(".data").classList.remove("hidden");
+    document.getElementById('play').classList.remove("hidden");
+    document.getElementById("inputForm").classList.add("hidden");
     input.value = "";
+    document.getElementById('resultLabel').innerHTML = "";
 }
 
-function randNumb(min, max) {
+function randNumb(min, max) {//calcola numeri random in un intervallo min-max
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
