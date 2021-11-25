@@ -1,3 +1,47 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 30px;
+    margin: 10px 0px 10px 0px;
+}
+
+body{
+    height: 100vh;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.data{
+    text-align: center;
+}
+
+#data-title{
+    font-weight: bold;
+}
+
+#data-content{
+
+}
+
+#inputForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inputForm.hidden{
+    display: none;
+}
+
 .hidden{
     display: none;
 }

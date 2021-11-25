@@ -7,12 +7,22 @@
     <meta name="viewport" content="width=s, initial-scale=1.0">
     <title>Simon Says</title>
 
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- MY CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div id="data"></div>
+    <div class="data">
+        <div id="data-title"></div>
+        <div id="data-content"></div>
+        <button id="replay" class="hidden">Play again</button>
+    </div>
 
     <div id="inputForm" class="hidden">
         <label id="inputLabel" for="inputNumb"></label><br>
@@ -20,6 +30,8 @@
         <button id="conferma" type="submit" value="Conferma">Conferma</button><br>
         <label id="resultLabel" for="resultArray"></label><br>
     </div>
+
+
 
     <script src="js/script.js"></script>
 </body>
