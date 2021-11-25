@@ -24,6 +24,7 @@ function playGame() { //Mostra il form di input
     document.querySelector(".data").classList.add("hidden");
     document.getElementById("inputForm").classList.remove("hidden");
     document.getElementById('inputLabel').innerHTML = `Inserisci un numero (ancora ${lvl})`;
+    document.getElementById("input").focus();
 }
 
 function cpuInput(lvl) {//Calcola e scrive i numeri random da ricordare
@@ -43,6 +44,7 @@ function cpuInput(lvl) {//Calcola e scrive i numeri random da ricordare
 function userInput() {//Aggiorna il gioco dopo l'inserimento di un numero, controlla se il numero è tra quelli giusti
     document.getElementById('inputLabel').innerHTML = `Inserisci un numero (ancora ${lvl})`;
     let input = document.getElementById("input");
+    document.getElementById("input").focus();
     if (isNaN(parseInt(input.value))) {
         alert("ATTENZIONE: devi inserire un numero");
     } else if (parseInt(input.value) < 0 || parseInt(input.value) > 100) {

@@ -15,6 +15,12 @@ body{
     align-items: center;
 }
 
+input{
+    width: 70px;
+    padding: 10px;
+    text-align: center;
+}
+
 button{
     padding: 5px 10px;
     font-size: 20px;
