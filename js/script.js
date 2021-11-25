@@ -1,5 +1,5 @@
 // PROGRAMMA
-let lvl = 3;
+let lvl = 5;
 let timesLeft = lvl;
 let cpuNumbers = [];
 let userGuessed = [];
@@ -7,7 +7,7 @@ let userGuessed = [];
 document.getElementById("conferma").addEventListener("click", userInput);
 document.getElementById("play").addEventListener("click", function () {
     playPreGame();
-    setTimeout(playGame, 3000);
+    setTimeout(playGame, 20000);
 });
 // END PROGRAMMA
 
@@ -102,4 +102,10 @@ function randNumb(min, max) {//calcola numeri random in un intervallo min-max
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 }
+
+//NEXT STEP
+// function timer(){
+//     const interval = setInterval();
+// }
+
 // END FUNZIONI

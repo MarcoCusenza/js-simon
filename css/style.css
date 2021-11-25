@@ -34,10 +34,6 @@ button{
     font-weight: bold;
 }
 
-#data-content{
-
-}
-
 #inputForm{
     display: flex;
     flex-direction: column;
